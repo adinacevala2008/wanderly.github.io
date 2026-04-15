@@ -9,12 +9,6 @@ import logoImg from "@assets/logo_nou-Picsart-AiImageEnhancer_1776267648609.png"
 // @ts-ignore
 import phoneImg from "@assets/telefon_1776267833774.png";
 // @ts-ignore
-import heroImg from "@assets/Screenshot_2026-04-15_142057_1776267659568.png";
-// @ts-ignore
-import despreImg from "@assets/Screenshot_2026-04-15_142113_1776267669064.png";
-// @ts-ignore
-import functImg from "@assets/Screenshot_2026-04-15_142129_1776267681725.png";
-// @ts-ignore
 import screen1 from "@assets/image_1776267707591.png";
 // @ts-ignore
 import screen2 from "@assets/image_1776267722559.png";
@@ -132,25 +126,6 @@ export default function Home() {
           <div className="absolute left-1/3 bottom-10 w-14 h-14 bg-primary/10 opacity-30" style={{ clipPath: "polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)" }} />
         </section>
 
-        {/* IMAGINE SUGESTIVĂ HOME — full-width banner */}
-        <section className="relative h-[400px] overflow-hidden">
-          <img
-            src={heroImg}
-            alt="Wanderly in actiune - explorare urbana"
-            className="w-full h-full object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div className="absolute bottom-8 left-0 right-0 text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-serif font-bold text-foreground drop-shadow-lg"
-            >
-              Descoperă orașul altfel — cu Wanderly
-            </motion.p>
-          </div>
-        </section>
 
         {/* APLICAȚIA WANDERLY — cele 3 carduri */}
         <section id="aplicatie" className="py-24 relative z-10 bg-card/30 border-y border-border backdrop-blur-sm">
@@ -219,43 +194,24 @@ export default function Home() {
         <section id="functionalitati" className="py-24 relative">
           <div className="max-w-7xl mx-auto px-6">
 
-            {/* Imagine sugestivă funcționalități */}
-            <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
-              >
-                <h2 className="text-3xl md:text-5xl font-serif font-bold leading-tight">
-                  Funcționalitățile Aplicației <span className="text-primary">Wanderly</span>
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Wanderly transformă deplasările zilnice într-o experiență interactivă, utilizând inteligența artificială
-                  pentru a genera misiuni adaptate locației tale. Explorează mai mult, descoperă mai mult!
-                </p>
-                <Button size="lg" className="h-14 px-8 rounded-full font-semibold" onClick={() => scrollTo("download")}>
-                  DESCOPERIȚI ACUM! <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-                <div className="rounded-3xl overflow-hidden border border-border shadow-2xl">
-                  <img
-                    src={functImg}
-                    alt="Wanderly - grup de prieteni explorand cu aplicatia"
-                    className="w-full h-72 object-cover object-top"
-                  />
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              className="text-center max-w-3xl mx-auto mb-16"
+            >
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
+                Funcționalitățile Aplicației <span className="text-primary">Wanderly</span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                Wanderly transformă deplasările zilnice într-o experiență interactivă, utilizând inteligența artificială
+                pentru a genera misiuni adaptate locației tale. Explorează mai mult, descoperă mai mult!
+              </p>
+              <Button size="lg" className="h-14 px-8 rounded-full font-semibold" onClick={() => scrollTo("download")}>
+                DESCOPERIȚI ACUM! <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </motion.div>
 
             {/* Grid funcționalități */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
@@ -369,30 +325,13 @@ export default function Home() {
         <section id="despre" className="py-24 bg-background border-y border-border">
           <div className="max-w-7xl mx-auto px-6">
 
-            {/* Imagine sugestivă + text */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div className="mb-20">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-              >
-                <div className="rounded-3xl overflow-hidden border border-border shadow-2xl">
-                  <img
-                    src={despreImg}
-                    alt="Wanderly - comunitate de exploratori"
-                    className="w-full object-cover"
-                    style={{ maxHeight: "420px" }}
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
+                className="space-y-6 max-w-3xl mx-auto text-center"
               >
                 <h2 className="text-3xl md:text-5xl font-serif font-bold leading-tight">
                   Despre Wanderly — <span className="text-primary">Explorare în Stil Nou</span>
@@ -480,9 +419,6 @@ export default function Home() {
                     transition={{ delay: i * 0.15 }}
                     className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-all"
                   >
-                    <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 border border-primary/20">
-                      <img src={logoImg} alt="Wanderly" className="w-10 h-10 rounded-lg object-cover" />
-                    </div>
                     <h4 className="text-lg font-bold text-primary font-serif mb-2">{m.name}</h4>
                     <p className="text-muted-foreground text-sm leading-relaxed">{m.role}</p>
                   </motion.div>
