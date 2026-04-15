@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 // @ts-ignore
 import logoImg from "@assets/logo_nou-Picsart-AiImageEnhancer_1776267648609.png";
 // @ts-ignore
-import phoneImg from "@assets/telefon_gemini_1776272903655.png";
+import phoneImg from "@assets/telefon_gemini-removebg-preview_1776272992745.png";
 // @ts-ignore
 import screen1 from "@assets/image_1776267707591.png";
 // @ts-ignore
