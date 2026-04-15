@@ -116,7 +116,7 @@ export default function Home() {
               <img
                 src={phoneImg}
                 alt="Wanderly App pe telefon"
-                className="relative z-10 w-auto max-h-[520px] object-contain drop-shadow-2xl"
+                className="relative z-10 w-auto max-h-[700px] object-contain drop-shadow-2xl"
               />
             </motion.div>
           </div>
