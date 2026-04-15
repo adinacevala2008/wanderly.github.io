@@ -16,6 +16,17 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### Wanderly Landing Site (`artifacts/wanderly/`)
+- **Type**: React + Vite (frontend-only, no backend)
+- **Preview path**: `/`
+- **Description**: Full Romanian landing page for the Wanderly exploration mobile app
+- **Theme**: Dark charcoal + gold (#C89B3C), hexagonal honeycomb patterns, bee branding
+- **Sections**: Navbar, Hero, App Features, Funcționalități, Despre Noi, Download CTA, Contact, Footer
+- **Font**: Playfair Display (headings) + Inter (body)
+- **Animations**: Framer Motion scroll-triggered entrances
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages
