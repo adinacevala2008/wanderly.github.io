@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { MapPin, Zap, Users, ArrowRight, Mail, ShieldCheck, Trophy, Gamepad2, Globe, Heart, Leaf, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,10 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.18 } }
 };
 
+
 export default function Home() {
+  const [activeScreen, setActiveScreen] = useState(0);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
