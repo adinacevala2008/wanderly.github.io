@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Zap, Users, ArrowRight, Star, Mail, ShieldCheck, Trophy, Gamepad2, Globe, Heart, Leaf, Download } from "lucide-react";
+import { MapPin, Zap, Users, ArrowRight, Mail, ShieldCheck, Trophy, Gamepad2, Globe, Heart, Leaf, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -83,10 +83,6 @@ export default function Home() {
               variants={staggerContainer}
               className="max-w-2xl"
             >
-              <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                <Star className="w-4 h-4" />
-                <span>Explorare asistată de AI</span>
-              </motion.div>
               <motion.h1 variants={fadeIn} className="text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6 text-foreground">
                 Pollinate the World <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-200">through Adventure!</span>
