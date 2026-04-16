@@ -537,11 +537,6 @@ export default function Home() {
         <p className="text-muted-foreground text-sm mb-6 italic">
           "Pollinate the World through Adventure!"
         </p>
-        <div className="flex justify-center gap-6 mb-8 text-sm text-muted-foreground">
-          <button className="hover:text-primary transition-colors">Termeni și Condiții</button>
-          <button className="hover:text-primary transition-colors">Politică de Confidențialitate</button>
-          <button className="hover:text-primary transition-colors">Suport</button>
-        </div>
         <p className="text-muted-foreground/60 text-sm">
           &copy; {new Date().getFullYear()} Wanderly — Echipa NovaHorizon, Colegiul Național „Spiru Haret" Târgu Jiu.
         </p>
