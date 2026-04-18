@@ -33,6 +33,20 @@ const staggerContainer = {
 
 export default function Home() {
   const [activeScreen, setActiveScreen] = useState(0);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+    if (!name.trim() || !message.trim()) return;
+    const subject = encodeURIComponent(`Mesaj de la ${name} — Wanderly`);
+    const body = encodeURIComponent(`Nume: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`);
+    window.open(`mailto:wanderly.learning.app@gmail.com?subject=${subject}&body=${body}`, "_blank");
+    setSent(true);
+    setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setSent(false), 4000);
+  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -507,20 +521,49 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="bg-card p-8 rounded-2xl border border-border"
               >
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Nume</label>
-                    <Input placeholder="Cum te numești?" className="bg-background border-border h-12" />
+                    <label className="text-sm font-medium mb-2 block">Nume *</label>
+                    <Input
+                      placeholder="Cum te numești?"
+                      className="bg-background border-border h-12"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                    />
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-2 block">Email</label>
-                    <Input type="email" placeholder="adresa@email.com" className="bg-background border-border h-12" />
+                    <Input
+                      type="email"
+                      placeholder="adresa@email.com"
+                      className="bg-background border-border h-12"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
                   </div>
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Mesaj</label>
-                    <Textarea placeholder="Cu ce te putem ajuta?" className="bg-background border-border min-h-[120px]" />
+                    <label className="text-sm font-medium mb-2 block">Mesaj *</label>
+                    <Textarea
+                      placeholder="Cu ce te putem ajuta?"
+                      className="bg-background border-border min-h-[120px]"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                    />
                   </div>
-                  <Button className="w-full h-12 text-lg font-medium mt-4">Trimite Mesajul</Button>
+                  <Button
+                    type="submit"
+                    className="w-full h-12 text-lg font-medium mt-4"
+                    disabled={sent}
+                  >
+                    {sent ? "Mesaj deschis in clientul tau de email!" : "Trimite Mesajul"}
+                  </Button>
+                  {sent && (
+                    <p className="text-center text-sm text-primary mt-2">
+                      Se deschide clientul tau de email cu mesajul pre-completat. Trimite-l de acolo!
+                    </p>
+                  )}
                 </form>
               </motion.div>
             </div>
