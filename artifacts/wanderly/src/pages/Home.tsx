@@ -470,7 +470,7 @@ export default function Home() {
                 Disponibil momentan doar pe Android
               </p>
               <div className="flex justify-center">
-                <Button size="lg" className="h-16 px-10 rounded-full text-lg flex items-center gap-3 shadow-lg shadow-primary/25">
+                <Button size="lg" className="h-16 px-10 rounded-full text-lg flex items-center gap-3 shadow-lg shadow-primary/25" onClick={() => window.open("https://download1586.mediafire.com/ouy2wsuf7xygHWGBQmNwr0E0T8-mDExRuZWx0nMwezlbokYe3YnS3aTOHBXa4RoxOUA34t3fyWQS6TsO2BaZr_m9dM_oF6j80ywHlismg1yL3zJV-M4WAzD23ULjM834HAwwHaxOhWkDGUKaAQxB5mF_CuSKnL_2UiY2fgBCbA/k9xjcjbubm3dsor/wanderly.apk", "_blank", "noopener,noreferrer")}>
                   <Download className="w-6 h-6" />
                   Descarcă pe Android
                 </Button>
