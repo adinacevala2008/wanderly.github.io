@@ -36,16 +36,36 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { name, email, message } = formData;
     if (!name.trim() || !message.trim()) return;
-    const subject = encodeURIComponent(`Mesaj de la ${name} — Wanderly`);
-    const body = encodeURIComponent(`Nume: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`);
-    window.open(`mailto:wanderly.learning.app@gmail.com?subject=${subject}&body=${body}`, "_blank");
-    setSent(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    setSending(true);
+    setSendError("");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/wanderly.learning.app@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name,
+          email: email || "(nu a fost specificat)",
+          message,
+          _subject: `Mesaj nou de la ${name} - Wanderly`,
+          _template: "table",
+        }),
+      });
+      if (!res.ok) throw new Error("Eroare la trimitere");
+      setSent(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSent(false), 6000);
+    } catch (err) {
+      setSendError("Nu am putut trimite mesajul. Te rugam sa incerci din nou.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -555,13 +575,18 @@ export default function Home() {
                   <Button
                     type="submit"
                     className="w-full h-12 text-lg font-medium mt-4"
-                    disabled={sent}
+                    disabled={sending || sent}
                   >
-                    {sent ? "Mesaj deschis in clientul tau de email!" : "Trimite Mesajul"}
+                    {sending ? "Se trimite..." : sent ? "Mesaj trimis cu succes!" : "Trimite Mesajul"}
                   </Button>
                   {sent && (
                     <p className="text-center text-sm text-primary mt-2">
-                      Se deschide clientul tau de email cu mesajul pre-completat. Trimite-l de acolo!
+                      Multumim! Mesajul tau a ajuns la noi. Iti vom raspunde cat mai curand.
+                    </p>
+                  )}
+                  {sendError && (
+                    <p className="text-center text-sm text-red-400 mt-2">
+                      {sendError}
                     </p>
                   )}
                 </form>
