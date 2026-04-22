@@ -4,7 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
+<<<<<<< HEAD
 //const rawPort = process.env.PORT;
+=======
+const rawPort = process.env.PORT || 3000;
+>>>>>>> 225bbc3b0123810dcdc4fac8b5be4c4b0f04ef1b
 
 const port = Number(process.env.PORT) || 3000;
 const basePath = process.env.BASE_PATH || "./";
@@ -22,7 +26,7 @@ if (!basePath) {
 }
 
 export default defineConfig({
-  base: basePath,
+  base: './',
   plugins: [
     react(),
     tailwindcss(),
